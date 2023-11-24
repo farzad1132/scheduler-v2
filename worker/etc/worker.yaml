@@ -1,0 +1,19 @@
+Name: worker.rpc
+ListenOn: 0.0.0.0:8080
+
+
+#kq
+KqConsumerConf:
+  Name: kqConsumer
+  Brokers:
+    - localhost:9094
+  Group: consumer
+  Topic: Orders
+  Offset: first
+  Consumers: 1
+  Processors: 1
+
+Log:
+  Compress: true
+  Stat: false
+  Encoding: plain

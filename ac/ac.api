@@ -1,0 +1,23 @@
+syntax = "v1"
+
+info (
+	title: ac
+	desc: This API describes the Admission Ccontroller of the scheduler
+	author: "Farzad Mohammadi"
+	email: "farzad.mohammadi87@gmail.com"
+)
+
+type TaskOrderRequest {
+	Computation float64 `form:"computation"`
+}
+
+type TaskOrderResponse {
+	Ack string `json:"ack"`
+}
+
+service ac-api {
+	@server(
+		handler: TaskOrder
+	)
+	post /task/order(TaskOrderRequest) returns (TaskOrderResponse)
+}

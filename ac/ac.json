@@ -1,0 +1,86 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/task/order": {
+      "post": {
+        "operationId": "TaskOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TaskOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TaskOrderRequest"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "ac-api"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "TaskOrderRequest": {
+      "type": "object",
+      "properties": {
+        "computation": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "TaskOrderRequest",
+      "required": [
+        "computation"
+      ]
+    },
+    "TaskOrderResponse": {
+      "type": "object",
+      "properties": {
+        "ack": {
+          "type": "string"
+        }
+      },
+      "title": "TaskOrderResponse",
+      "required": [
+        "ack"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}
